@@ -18,19 +18,18 @@ const PRODUCTOS=[{
 document.querySelector("body").innerHTML=`<h1>${usuario}</h1>
     <section class="caja">
       <div>
-        PRODUCTO
         ${PRODUCTOS[productoComprado].producto}
-      </div>
-      precio  S/.
-        ${PRODUCTOS[productoComprado].precio}
-      </div>
+         S/. ${PRODUCTOS[productoComprado].precio}
       <div>
-        Talla: ${PRODUCTOS[productoComprado].talla}
+        Talla: ${PRODUCTOS[productoComprado].talla.toUpperCase()}
       </div>
       <div>
         Descuento: ${CalcularDescuento()}
       </div>
-      <img src="img/${PRODUCTOS[productoComprado].imagen}" alt="PRODUCTO">
+      <div>
+        Descuento: ${PrecioTotal()}
+      </div>
+      <img src="img/${PRODUCTOS[productoComprado].imagen}" alt="${PRODUCTOS[productoComprado].producto}">
     </section>`
 
     console.log(CalcularDescuento());
@@ -38,5 +37,8 @@ document.querySelector("body").innerHTML=`<h1>${usuario}</h1>
     function CalcularDescuento(){
         precioDescuento = PRODUCTOS[productoComprado].precio * DESCUENTO;
         return precioDescuento;
-  
+      }
+
+    function PrecioTotal(){
+      return PRODUCTOS[productoComprado].precio - precioDescuento
     }
